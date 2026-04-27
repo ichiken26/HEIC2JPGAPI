@@ -13,6 +13,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: AWS_DEPLOY_ROLE_ARN
     env:
       AWS_REGION: ${{ vars.AWS_REGION }}
       LAMBDA_FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME }}
