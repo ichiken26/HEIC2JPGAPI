@@ -31,7 +31,13 @@ jobs:
           rm -rf build function.zip
           mkdir -p build
           pip install --upgrade pip
-          pip install -r requirements.txt -t build
+          pip install \
+            --platform manylinux2014_x86_64 \
+            --implementation cp \
+            --python-version 3.10 \
+            --only-binary=:all: \
+            --target build \
+            -r requirements.txt
           cp -r app build/
           cd build
           zip -r ../function.zip .
